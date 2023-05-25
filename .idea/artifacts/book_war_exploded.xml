@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="book:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/book_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="bookShop" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="druid-1.1.10" />
+          <element id="library" level="project" name="mysql-connector-java-8.0.17" />
+          <element id="library" level="project" name="lib_thymeleaf" />
+          <element id="library" level="project" name="servlet-api" />
+          <element id="library" level="project" name="kaptcha-2.3.2" />
+          <element id="library" level="project" name="gson-2.2.4" />
+          <element id="library" level="project" name="commons-fileupload-1.4" />
+          <element id="library" level="project" name="commons-io-2.11.0" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="book/web/Web" />
+    </root>
+  </artifact>
+</component>
