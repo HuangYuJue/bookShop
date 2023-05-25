@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>添加图书</title>
+  <link rel="stylesheet" th:href="@{/static/css/minireset.css}" />
+  <link rel="stylesheet" th:href="@{/static/css/common.css}" />
+  <link rel="stylesheet" th:href="@{/static/css/style.css}" />
+  <link rel="stylesheet" th:href="@{/static/css/cart.css}" />
+  <link rel="stylesheet" th:href="@{/static/css/bookManger.css}" />
+  <link rel="stylesheet" th:href="@{/static/css/register.css}" />
+  <link rel="stylesheet" th:href="@{/static/css/book_edit.css}" />
+</head>
+<body>
+<div class="header">
+  <div class="w">
+    <div class="header-left">
+      <a th:href="@{book.do(operate='index')}">
+        <img th:src="@{/static/img/logo.webp}" alt=""/></a>
+      <h1>添加图书</h1>
+    </div>
+    <div class="header-right">
+      <a th:href="@{book.do(operate='bookManager')}" class="order">图书管理</a>
+      <a th:href="@{order.do(operate='getAllOrder')}" class="destory">订单管理</a>
+      <a th:href="@{book.do(operate='index')}" class="gohome">返回商城</a>
+    </div>
+  </div>
+</div>
+<div class="login_banner">
+  <div class="register_form">
+    <form th:action="@{book.do}">
+      <input type="hidden" name="operate" value="add">
+      <div class="form-item">
+        <div>
+          <label>图片:</label>
+          <!-- 只获取文件名：document.getElementById('bookImg').files[0].name -->
+          <!-- 获取带路径的文件名：document.getElementById('bookImg').value -->
+          <input id="bookImg" onchange="document.getElementById('bookImg').value=this.files[0].name" type="file" class="file" placeholder="请选择文件" name="bookImg"/>
+        </div>
+      </div>
+      <div class="form-item">
+        <div>
+          <label>名称:</label>
+          <input type="text" placeholder="请输入名称" name="bookName"/>
+        </div>
+        <span class="errMess" style="visibility: visible;">请输入正确的名称</span>
+      </div>
+      <div class="form-item">
+        <div>
+          <label>价格:</label>
+          <input type="text" placeholder="请输入价格" name="price"/>
+        </div>
+        <span class="errMess">请输入正确数字</span>
+      </div>
+      <div class="form-item">
+        <div>
+          <label>作者:</label>
+          <input type="text" placeholder="请输入作者" name="author"/>
+        </div>
+        <span class="errMess">请输入正确作者</span>
+      </div>
+      <div class="form-item">
+        <div>
+          <label>销量:</label>
+          <input type="number" placeholder="请输入销量" name="saleCount"/>
+        </div>
+        <span class="errMess">请输入正确销量</span>
+      </div>
+      <div class="form-item">
+        <div>
+          <label>库存:</label>
+          <input type="number" placeholder="请输入库存" name="bookCount"/>
+        </div>
+        <span class="errMess">请输入正确库存</span>
+      </div>
+      <button class="btn">提交</button>
+    </form>
+  </div>
+</div>
+<div class="bottom">
+  网上书城 ©2022
+</div>
+</body>
+</html>

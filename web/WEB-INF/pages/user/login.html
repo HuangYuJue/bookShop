@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+  <head>
+    <meta charset="UTF-8" />
+    <title>书城登录页面</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/style.css}" />
+  </head>
+  <script>
+    //页面加载事件
+    $(function (){
+      //获取cookie中的账号和密码
+      $.post
+    })
+  </script>
+  <body>
+    <div id="login_header">
+      <a th:href="@{/book.do(operate='index')}">
+        <img class="logo_img" alt="" th:href="@{/static/img/logo.webp}" />
+      </a>
+    </div>
+    <div class="login_banner">
+      <div id="l_content">
+        <span class="login_word">欢迎登录</span>
+      </div>
+
+      <div id="content">
+        <div class="login_form">
+          <div class="login_box">
+            <div class="tit">
+              <h1>书城用户</h1>
+            </div>
+            <div class="msg_cont">
+              <b></b>
+              <span class="errorMsg">请输入用户名和密码</span>
+            </div>
+            <div class="form">
+              <form th:action="@{/user.do}" method="post">
+                <input type="hidden" name="operate" value="login"/>
+                <label>用户名称：</label>
+                  <input class="itxt" type="text" placeholder="请输入用户名" autocomplete="off" tabindex="1"
+                         name="uname" id="username" th:value="${session.uname}"/>
+                <br/>
+                <br/>
+                <label>用户密码：</label>
+                <input class="itxt" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1"
+                  name="pwd" id="password" th:value="${session.pwd}"/>
+                <br/>
+                <br/>
+                <input type="submit" value="登录" id="sub_btn"/>
+                <input id="remember" type="checkbox" name="remember" value="remember">记住我
+              </form>
+              <div class="tit">
+                <a th:href="@{/page.do(operate='page',page='user/register')}">立即注册</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="bottom">
+      <span>
+        网上书城 &copy;2022
+      </span>
+    </div>
+  </body>
+</html>

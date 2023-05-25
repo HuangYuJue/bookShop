@@ -1,0 +1,216 @@
+body {
+    margin: 0px;
+    background-color: #cbd4d7;
+}
+
+.top2{
+    font-family: "Adobe Arabic";
+    line-height: 00px;
+    text-decoration: none;
+    color: #1f3b45;
+    font-size: 20px;
+}
+
+#top #info #right {
+    margin-right: 500px;
+}
+
+
+/*内容部分*/
+#content {
+    width: 80%;
+    height: 100%;
+    background-color: #86bdd4;
+    margin: 10px auto;
+}
+
+/*详细内容页面*/
+#content #usDetail {
+    width: auto;
+    height: 100%;
+    background-color: #d3dbdc;
+    opacity: 60%;
+}
+
+#content #usDetail #usDetail_left {
+    width: 40%;
+    height: 700px;
+    float: left;
+}
+
+/*左侧Tabs开始*/
+#content #usDetail #usDetail_left #usDetail_left_top {
+    height: 200px;
+}
+
+#content #usDetail #usDetail_left #usDetail_left_top img {
+    height: 120px;
+    width: 120px;
+    margin-left: 70px;
+    margin-top: 15px;
+}
+
+#content #usDetail #usDetail_left #usDetail_left_top #showImg {
+    float: left;
+    width: 30%;
+}
+
+#content #usDetail #usDetail_left #usDetail_left_top #userInfomation {
+    float: right;
+    width: 60%;
+    height: 100%;
+    margin-top: 50px;
+
+}
+
+#content #usDetail #usDetail_left #usDetail_left_content {
+    height: 500px;
+}
+
+#content #usDetail #usDetail_left #usDetail_left_content #showList {
+    height: 200px;
+    width: 350px;
+    background-color: #86bdd4;
+    margin-left: 70px;
+}
+
+#content #usDetail #usDetail_left #usDetail_left_content #showList ul {
+    list-style-type: none;
+}
+
+#content #usDetail #usDetail_left #usDetail_left_content #showList ul li {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #d4f5ec;
+    line-height: 40px;
+    margin-bottom: 1px;
+}
+
+#content #usDetail #usDetail_left #usDetail_left_content #showList ul li:hover {
+    background-color: #afe5e0;
+}
+
+/*左侧Tabs结束*/
+
+#content #usDetail #usDetail_right {
+    width: 60%;
+    height: 700px;
+    float: right;
+}
+
+/**右侧tabs开始**/
+#content #usDetail #usDetail_right .tabPanel ul {
+    height: 30px;
+    list-style-type: none;
+}
+
+#content #usDetail #usDetail_right .tabPanel ul li {
+    float: left;
+    margin: 0 2px 0 0;
+    border: 1px solid #aaa;
+    font-size: 11px;
+    height: 29px;
+    line-height: 30px;
+    width: 111px;
+    text-align: center;
+    cursor: pointer;
+    text-shadow: 0 1px 0 #fff;
+    border-radius: 4px 4px 0 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: #ddd;
+    background: -moz-linear-gradient(top, #eee, #ddd);
+    background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ddd));
+}
+
+#content #usDetail #usDetail_right .tabPanel .hit {
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+    color: #74bbb6;
+    text-shadow: 0 1px 0 #fff;
+    background: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#fff));
+    background: -moz-linear-gradient(top, #e1e1e1, #fff);
+}
+
+#content #usDetail #usDetail_right .showInfos .showInfo .hit {
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+    color: #efd7d7;
+    text-shadow: 0 1px 0 #fff;
+    background: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e1e1e1), to(#fff));
+    background: -moz-linear-gradient(top, #e1e1e1, #fff);
+}
+
+#content #usDetail #usDetail_right .pane {
+    border-top: 0;
+    min-height: 630px;
+    display: none;
+}
+
+#content #usDetail #usDetail_right .showInfo {
+    border-top: 0;
+    min-height: 630px;
+    display: none;
+}
+
+/**右侧tabs结束**/
+
+/*按钮样式*/
+button {
+    width: 200px;
+    padding: 8px;
+    border-color: #357ebd;
+    color: #fff;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 5px;
+    /* future proofing */
+    -khtml-border-radius: 10px;
+    /* for old Konqueror browsers */
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    font-weight: 900;
+    font-size: 125%
+}
+
+
+/*表格样式*/
+table {
+    background: white;
+    border-collapse: collapse;
+    margin: 1.25em 0 0;
+    width: 100%;
+}
+
+table tr,
+table th,
+table td {
+    border: none;
+    border-bottom: 1px solid #e4ebeb;
+    /*font-family: 'Lato', sans-serif;*/
+    font-size: 15px;
+    font-family: "宋体";
+}
+
+table th,
+table td {
+    padding: 10px 12px;
+    text-align: left;
+}
+
+table th {
+    background: #56a2cf;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+table tr td {
+    background: #eaf3f5;
+    color: #999999;
+}
+
+table tr:nth-of-type(2n+2) td {
+    background: #ffffff;
+}

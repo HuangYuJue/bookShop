@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图书管理</title>
+    <link rel="stylesheet" th:href="@{/static/css/minireset.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/cart.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/bookManger.css}" />
+    <script rel="script" type="text/javascript" charset="UTF-8" th:src="@{/static/script/jquery-1.4.2.js}"></script>
+    <script rel="script" type="text/javascript" charset="UTF-8" th:src="@{/static/script/jquery-1.11.0.min.js}"></script>
+  </head>
+  <style>
+    li{
+      list-style: none;
+      float: left;
+      background-color: #39987CFF;
+      overflow: hidden;
+      color: white;
+      line-height: 25px;
+      margin: 0px 20px 10px 350px;
+    }
+  </style>
+  <body>
+    <div class="header">
+      <div class="w">
+        <div class="header-left">
+          <a th:href="@{book.do(operate='index')}">
+            <img th:src="@{/static/img/logo.webp}" alt=""/></a>
+          <h1>图书管理系统</h1>
+        </div>
+        <div class="header-right">
+          <a th:href="@{book.do(operate='bookManager')}" class="order">图书管理</a>
+          <a th:href="@{order.do(operate='getAllOrder')}" class="destory">订单管理</a>
+          <a th:href="@{book.do(operate='index')}" class="gohome">返回商城</a>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="w">
+        <div class="add">
+          <a th:href="@{page.do(operate='page',page='manager/book_add')}">添加图书</a>
+        </div>
+        <div class="tabPanel">
+          <ul>
+            <li class="hit">有效图书</li>
+            <li>失效图书</li>
+          </ul>
+          <div class="panes">
+            <div class="pane">
+              <table>
+                <thead>
+                <tr>
+                  <th>图片</th>
+                  <th>商品名称</th>
+                  <th>价格</th>
+                  <th>作者</th>
+                  <th>销量</th>
+                  <th>库存</th>
+                  <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book : ${session.bookList}">
+                  <td><img th:src="@{|/static/uploads/${book.bookImg}|}" alt="" /></td>
+                  <td th:text="${book.bookName}">活着</td>
+                  <td th:text="${book.price}">价格100.00</td>
+                  <td th:text="${book.author}">余华</td>
+                  <td th:text="${book.saleCount}">销量200</td>
+                  <td th:text="${book.bookCount}">库存400</td>
+                  <td>
+                    <a th:onclick="|edit(${book.id})|">修改</a><a th:onclick="|del(${book.id})|" class="del">删除</a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="footer">
+              </div>
+            </div>
+            <div class="pane">
+              <table>
+                <thead>
+                <tr>
+                  <th>图片</th>
+                  <th>商品名称</th>
+                  <th>价格</th>
+                  <th>作者</th>
+                  <th>销量</th>
+                  <th>库存</th>
+                  <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="book : ${session.no_bookList}">
+                  <td>
+                    <img th:src="@{|/static/uploads/${book.bookImg}|}" alt="" />
+                  </td>
+                  <td th:text="${book.bookName}">活着</td>
+                  <td th:text="${book.price}">价格100.00</td>
+                  <td th:text="${book.author}">余华</td>
+                  <td th:text="${book.saleCount}">销量200</td>
+                  <td th:text="${book.bookCount}">库存400</td>
+                  <td>
+                    <a th:onclick="|edit(${book.id})|">修改</a><a th:onclick="|effect(${book.id})|" class="del">生效</a>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="down">
+        网上书城 ©2022
+      </div>
+    </div>
+  </body>
+<script>
+  //左右切换
+  $(function (){
+    $('.tabPanel ul li').click(function (){
+      $(this).addClass('hit').siblings().removeClass('hit');//将同辈元素移除hit class属性
+      $('.panes>div:eq(' + $(this).index() + ')').show().siblings().hide(); //经过的显示 不经过的隐藏
+    })
+  })
+  //删除图书
+  function del(bookId){
+    var res = confirm("确定删除该图书？");
+    window.location.href="/book.do?operate=del&status=-1&bookId="+bookId;
+  }
+  //编辑图书
+  function edit(bookId) {
+    window.location.href="/book.do?operate=getBookById&bookId="+bookId;
+  }
+  //图书生效
+  function effect(bookId){
+    var res = confirm("确定该图书生效？");
+    window.location.href="/book.do?operate=del&status=0&bookId="+bookId;
+  }
+</script>
+</html>

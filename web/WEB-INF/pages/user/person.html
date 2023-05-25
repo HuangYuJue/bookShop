@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/person.css}">
+    <script rel="script" type="text/javascript" charset="UTF-8" th:src="@{/static/script/jquery-1.4.2.js}"></script>
+    <script rel="script" type="text/javascript" charset="UTF-8" th:src="@{/static/script/jquery-1.11.0.min.js}"></script>
+    <style>
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <!--显示详细的详细内容-->
+    <div id="usDetail">
+        <div id="usDetail_left">
+            <!--左侧内容显示-->
+            <!--左侧内容显示头部-->
+            <div id="usDetail_left_top">
+                <div id="showImg">
+                    <img th:src="@{/static/img/people.png}" >
+                </div>
+                <div id="userInfomation">
+                    <b><span th:text="${session.user.uname}"></span></b>
+                </div>
+            </div>
+            <!--左侧内容显示下部-->
+            <div id="usDetail_left_content">
+                <div id="showList">
+                    <ul>
+                        <li>个人中心</li>
+                        <li><a th:href="@{book.do(operate='index')}">网站首页</a></li>
+                        <li><a th:href="@{cart.do(operate='cart')}">购物车</a></li>
+                        <!--<li><a th:href="@{}" class="top2">订单</a></li>-->
+                    </ul>
+                </div>
+            </div>
+            <!--左侧内容显示结束-->
+        </div>
+        <div id="usDetail_right">
+            <div class="showInfos">
+                <!--个人中心开始-->
+                <div class="showInfo" style="display:block;">
+                    <div class="tabPanel">
+                        <ul>
+                            <li class="hit">个人信息</li>
+                            <li>修改资料</li>
+                            <li>修改密码</li>
+                        </ul>
+                        <div class="panes">
+                            <div class="pane" style="display:block;">
+                                <p>用户名: <span th:text="${session.user.uname}"></span></p>
+                                <br>
+                                <p>邮 箱: <span th:text="${session.user.email}"></span> </p>
+                            </div>
+                            <div class="pane">
+                                <form th:action="@{/user.do}" method="post">
+                                    <input name="operate" value="editUser" type="hidden">
+                                    <input name="id" th:value="${session.user.id}" type="hidden">
+                                    用户名 :<input name="newuname" th:value="${session.user.uname}"/>
+                                    <br><br>
+                                    邮箱 :  <input type="text" th:value="${session.user.email}" name="newemail" />
+                                    <br><br>
+                                    <input type="submit" value="提交"/>
+                                </form>
+                            </div>
+                            <div class="pane">
+                                <form th:action="@{/user.do}" method="post">
+                                    <input name="operate" value="editPwd" type="hidden">
+                                    <input name="id" th:value="${session.user.id}" type="hidden">
+                                    用户名 :<span th:text="${session.user.uname}"></span> <br><br>
+                                    原始密码 : <input type="text" placeholder="" name="oldpwd"/><br><br>
+                                    新密码 : <input type="text" placeholder="" name="newpwd"/><br><br>
+                                    确认新密码 : <input type="text" placeholder="" name="rnewpwd"/><br><br>
+                                    <input type="submit" value="提交"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--个人中心结束-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        $('.tabPanel ul li').click(function() {
+            $(this).addClass('hit').siblings().removeClass('hit');//将同辈元素移除hit class属性
+            $('.panes>div:eq(' + $(this).index() + ')').show().siblings().hide(); //经过的显示 不经过的隐藏
+        })
+        // <!--左右切换-- >
+    })
+</script>
+</html>
