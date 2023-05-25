@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>订单详情页面</title>
+    <link rel="stylesheet" th:href="@{/static/css/minireset.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/cart.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/bookManger.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/orderManger.css}" />
+</head>
+<body>
+<div class="header">
+    <div class="w">
+        <div class="header-left">
+            <a th:href="@{/book.do(operate='index')}">
+                <img th:src="@{/static/img/logo.webp}" alt=""/></a>
+            <h1>订单详情</h1>
+        </div>
+        <div class="header-right">
+            <a th:href="@{book.do(operate='bookManager')}" class="order">图书管理</a>
+            <a th:href="@{order.do(operate='getAllOrder')}" class="destory">订单管理</a>
+            <a th:href="@{book.do(operate='index')}" class="gohome">返回商城</a>
+        </div>
+    </div>
+</div>
+<div class="list">
+    <div class="w">
+        <table>
+            <thead>
+            <tr>
+                <th>书本名称</th>
+                <th>购买数量</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="detail : ${session.detailList}">
+                <td th:text="${detail.book.bookName}"></td>
+                <td th:text="${detail.buyCount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="bottom">
+    <div class="down">
+        网上书城 ©2022
+    </div>
+</div>
+</body>
+</html>
